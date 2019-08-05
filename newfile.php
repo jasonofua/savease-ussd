@@ -20,36 +20,6 @@ if ($text == "") {
     $response .= "6. Withdraw fund \n";
     $response .= "7. Buy Pin ";
 
-} else if ($level > "1") {
-    // Business logic for first level response
-
-    if($textValue[0] == "1"){
-        if(count($textValue) == 2){
-        
-        $ussd_text = "Please enter your voucher pin";
-        echo "CON $ussd_text";
-    }
-
-    if(count($textValue) == 3){
-        if (empty($textValue[1])){
-            $ussd_text = "Sorry we do not accept blank values";
-            echo "CON $ussd_text";
-           
-    }else{
-        $inputParame = $textValue[1];
-
-        if(isset($config)){
-            $res = $config->VerifyPin($inputParame);
-            $response = $res;
-        }
-    }
-
-    }
-       
-    }
-    
-   
-
 } 
 
 // Echo the response back to the API
