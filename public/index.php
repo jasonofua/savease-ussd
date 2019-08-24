@@ -19,7 +19,7 @@ require_once('../lib/nusoap.php');
 
 	if (isset($action))
 	{
-		$result['response'] = $client->call($action, "");
+		$result['response'] = $client->call($action, $json);
 	}
 
         $response = "".$result['response']['VerifyPinResult'];
