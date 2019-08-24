@@ -6,23 +6,20 @@ $sessionId   = $_POST["sessionId"];
 $serviceCode = $_POST["serviceCode"];
 $phoneNumber = $_POST["phoneNumber"];
 $text        = $_POST["text"];
+$str_arr = explode ("*", $text);
+$num = count($str_arr);
+$userResponse=trim(end($str_arr));
 
 if ($text == ""){
     $response  = "CON What would you want to do \n";
     $response .= "1. Verify Voucher \n";
     $response .= "2. My phone number";
-}else{
-    $str_arr = explode ("*", $text);
-    $num = count($str_arr);
-    $userResponse=trim(end($str_arr));
+}else if($num <1 && $str_arr[0] == "1"){
+    $response  = "CON Enter Voucher Pin".$userResponse;
 
-    if($num = 1 && $str_arr[0] == "1"){
-        $response  = "CON Enter Voucher Pin".$userResponse;
-
-    }else {
-        $response  = "CON next".$userResponse;
-    }
-
+    
+}else if($num >1 && $str_arr[0] == "1"){
+    $response  = "CON  Pin".$userResponse;
     
 }
 
