@@ -27,7 +27,7 @@ if($str_arr[0] == "1"){
 
         $error = $client->getError();
 
-        $json	  = '{"inputParame":'.$str_arr[1].'}';
+        $json	  = '{"inputParame":123456780975}';
 	
 	if ($error)
 	{
