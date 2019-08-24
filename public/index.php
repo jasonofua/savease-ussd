@@ -19,7 +19,7 @@ if ($text == ""){
 
     
 }else if($text == "1*1"){
-    $response  = "CON  Pin".$str_arr[1];
+    $response  = "CON  Pin".$num;
     
 }
 
