@@ -1,7 +1,7 @@
 <?php
 require_once('../lib/nusoap.php');
 
-    $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+    	$wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
         $client = new nusoap_client($wsdl, 'wsdl');
 
         $error = $client->getError();
