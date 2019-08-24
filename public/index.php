@@ -23,7 +23,7 @@ $json	  = '{"inputParame":"1234567898765"}';
 		$result['response'] = $client->call($action, "");
 	}
 // Reads the variables sent via POST from our gateway
-    var_dump($result['response']['VerifyPinResult']);
+    echo $result['response']['VerifyPinResult'];
 
 
     echo "<h3>Output : </h3>";
