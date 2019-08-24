@@ -6,7 +6,7 @@ require_once('../lib/nusoap.php');
 
         $error = $client->getError();
 
-        $json	  = '{"inputParame":123456780975}';
+        $json	  = '{"inputParame":"721312755925"}';
 	
 	if ($error)
 	{
