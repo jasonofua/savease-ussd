@@ -21,7 +21,30 @@ if ($text == ""){
 }else if($num == 2){
 
 if($str_arr[0] == "1"){
-    $response  = "CON  Pin".$num;
+
+    $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
+
+        $error = $client->getError();
+
+        $json	  = '{"inputParame":'.$str_arr[1].'}';
+	
+	if ($error)
+	{
+		echo $error; die();
+	}
+	
+    $action = "VerifyPin";
+    
+    $result = array();
+
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action, "");
+	}
+
+        $response = "".$result['response']['VerifyPinResult'];
+   
 }
     
     
