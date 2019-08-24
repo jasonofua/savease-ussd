@@ -1,4 +1,5 @@
 <?php
+require_once('../lib/nusoap.php');
 
 // Reads the variables sent via POST from our gateway
 $sessionId   = $_POST["sessionId"];
@@ -18,6 +19,35 @@ if ($text == ""){
         $response  = "CON Enter Voucher Pin";
 
     }
+
+    if($num = 2 && $str_arr[0] == "1"){
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
+
+        $error = $client->getError();
+
+        $json	  = '{"inputParame":'. $str_arr[2] . '}';
+	
+	if ($error)
+	{
+		echo $error; die();
+	}
+	
+    $action = "VerifyPin";
+    
+    $result = array();
+
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action, "");
+	}
+    echo $result['response']['VerifyPinResult'];
+
+
+        $response = "".$result['response']['VerifyPinResult'];
+
+    }
+
 
 
 
