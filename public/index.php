@@ -19,7 +19,11 @@ if ($text == ""){
 
     
 }else if($num == 2){
+
+if($str_arr[0] == "1"){
     $response  = "CON  Pin".$num;
+}
+    
     
 }
 
