@@ -11,8 +11,18 @@ if ($text == ""){
     $response .= "1. Verify Voucher \n";
     $response .= "2. My phone number";
 }else{
-    $str_arr = explode ("*", $text); 
-    $response  = "CON What would you want to do".$str_arr[0];
+    $str_arr = explode ("*", $text);
+    $num = count($str_arr);
+    
+    if($num = 1 && $str_arr[0] == "1"){
+        $response  = "CON Enter Voucher Pin";
+
+    }
+
+
+
+
+    
 }
 
 
