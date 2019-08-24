@@ -14,11 +14,11 @@ if ($text == ""){
     $response  = "CON What would you want to do \n";
     $response .= "1. Verify Voucher \n";
     $response .= "2. My phone number";
-}else if($num <1 && $str_arr[0] == "1"){
+}else if($text == "1"){
     $response  = "CON Enter Voucher Pin".$userResponse;
 
     
-}else if($num >1 && $str_arr[0] == "1"){
+}else if($text == "1*1"){
     $response  = "CON  Pin".$userResponse;
     
 }
