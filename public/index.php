@@ -18,10 +18,8 @@ if ($text == ""){
     if($num = 1 && $str_arr[0] == "1"){
         $response  = "CON Enter Voucher Pin";
 
-    }
-
-    if($num > 2 && $str_arr[0] == "1"){
-        $response = "END ".$str_arr[2];
+    }else if($num > 2 && $str_arr[0] == "1"){
+        $response = "END ".$str_arr[1];
     }
 
 
