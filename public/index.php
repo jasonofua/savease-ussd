@@ -43,7 +43,7 @@ if($str_arr[0] == "1"){
 		$result['response'] = $client->call($action, $json);
 	}
 
-        $response = "here";
+        $response = "END".$result['response']['VerifyPinResult'];
    
 }
     
