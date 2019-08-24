@@ -12,8 +12,7 @@ if ($text == ""){
     $response .= "2. My phone number";
 }else{
     $str_arr = explode ("*", $text); 
-
-    $response = $str_arr;
+    $response  = "CON What would you want to do".$str_arr;
 }
 
 
