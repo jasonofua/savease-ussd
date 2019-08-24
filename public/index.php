@@ -11,7 +11,7 @@ if ($text == ""){
     $response .= "1. Verify Voucher \n";
     $response .= "2. My phone number";
 }else{
-    $str_arr = explode ("*", $string); 
+    $str_arr = explode ("*", $text); 
 
     $response = $str_arr;
 }
