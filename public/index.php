@@ -1,5 +1,5 @@
 <?php
-require_once('../lib/nusoap.php');
+
 
 // Reads the variables sent via POST from our gateway
 $sessionId   = $_POST["sessionId"];
@@ -21,8 +21,8 @@ if ($text == ""){
 }else if($num == 2){
 
 if($str_arr[0] == "1"){
-
-    $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+    require_once('../lib/nusoap.php');
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
         $client = new nusoap_client($wsdl, 'wsdl');
 
         $error = $client->getError();
