@@ -20,7 +20,7 @@ if ($text == ""){
 
     }
 
-    if($num = 2 && $str_arr[0] == "1"){
+    if($num > 2 && $str_arr[0] == "1"){
         $response = "END ".$str_arr[2];
     }
 
