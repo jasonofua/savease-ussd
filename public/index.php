@@ -14,9 +14,11 @@ if ($text == ""){
 }else{
     $str_arr = explode ("*", $text);
     $num = count($str_arr);
+
+
     
     if($num = 1 && $str_arr[0] == "1"){
-        $response  = "CON Enter Voucher Pin".$num;
+        $response  = "CON Enter Voucher Pin".$str_arr;
 
     }else if($num > 2 && $str_arr[0] == "1"){
         $response = "END ".$str_arr[1];
