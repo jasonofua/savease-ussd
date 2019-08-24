@@ -18,7 +18,7 @@ if ($text == ""){
     $response  = "CON Enter Voucher Pin".$userResponse;
 
     
-}else if($text == "1*1"){
+}else if($num == 2){
     $response  = "CON  Pin".$num;
     
 }
