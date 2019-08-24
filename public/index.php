@@ -1,5 +1,5 @@
 <?php
-require_once('lib/nusoap.php');
+require_once('../lib/nusoap.php');
 
 
 $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
