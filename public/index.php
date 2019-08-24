@@ -19,33 +19,33 @@ if ($text == ""){
 
     
 }else if($num == 2){
-    $response = "END ".$str_arr[1];
-// if($str_arr[0] == "1"){
-//     require_once('../lib/nusoap.php');
-//         $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
-//         $client = new nusoap_client($wsdl, 'wsdl');
 
-//         $error = $client->getError();
+if($str_arr[0] == "1"){
+    require_once('../lib/nusoap.php');
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
 
-//         $json	  = '{"inputParame":'.$str_arr[1].'}';
+        $error = $client->getError();
+
+        $json	  = '{"inputParame":'.$str_arr[1].'}';
 	
-// 	if ($error)
-// 	{
-// 		echo $error; die();
-// 	}
+	if ($error)
+	{
+		echo $error; die();
+	}
 	
-//     $action = "VerifyPin";
+    $action = "VerifyPin";
     
-//     $result = array();
+    $result = array();
 
-// 	if (isset($action))
-// 	{
-// 		$result['response'] = $client->call($action, $json);
-// 	}
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action, $json);
+	}
 
         
    
-// }
+}
     
     
 }
