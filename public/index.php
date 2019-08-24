@@ -29,21 +29,21 @@ if($str_arr[0] == "1"){
 
         $json	  = '{"inputParame":'.$str_arr[1].'}';
 	
-	if ($error)
-	{
-		echo $error; die();
-	}
+	// if ($error)
+	// {
+	// 	echo $error; die();
+	// }
 	
-    $action = "VerifyPin";
+    // $action = "VerifyPin";
     
-    $result = array();
+    // $result = array();
 
-	if (isset($action))
-	{
-		$result['response'] = $client->call($action, $json);
-	}
+	// if (isset($action))
+	// {
+	// 	$result['response'] = $client->call($action, $json);
+	// }
 
-        $response = "END ".$result['response']['VerifyPinResult'];
+        $response = "END ".$json;
    
 }
     
