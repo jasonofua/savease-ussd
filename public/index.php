@@ -174,7 +174,7 @@ if($str_arr[0] == "1"){
 }else if ($text == "4"){
     $response = "CON Enter reciever account number ";
 
-    $response = "CON Enter the amount, reciever account number,narration and your pin all seperated by a comma (,) ";
+   // $response = "CON Enter the amount, reciever account number,narration and your pin all seperated by a comma (,) ";
 
 }
 
