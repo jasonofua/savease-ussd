@@ -15,10 +15,11 @@ $str2 = substr($phoneNumber, 4);
 if ($text == ""){
     $response  = "CON What would you want to do \n";
     $response .= "1. Verify Voucher \n";
-    $response .= "2. Get Balance";
+    $response .= "2. Get Balance \n";
+    $response .= "3. Make Deposit \n";
 }else if($text == "1"){
     $response  = "CON Enter Voucher Pin";    
-}else if($num == 2){
+}else if($num >= 2){
 
 if($str_arr[0] == "1"){
     require_once('../lib/nusoap.php');
@@ -54,6 +55,10 @@ if($str_arr[0] == "1"){
 		$result['response'] = $client->call($action,array("saveaseID"=>$str2));
 	}
         $response = "END YOur Savease account is : N ".$result['response']['getBalzResult'];  
+}else if ($text == "3") {
+    $response  = "CON Select Account Type \n";
+    $response .= "1. Self \n";
+    $response .= "2. Savease Account \n";
 }
 
 // Echo the response back to the API
