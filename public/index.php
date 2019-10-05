@@ -60,7 +60,7 @@ if($str_arr[0] == "1"){
 	{
 		$result['response'] = $client->call($action,array("in_acctNo"=>$str2,"in_cardpin"=>$str_arrDeposit[0],"in_naration"=>$str_arrDeposit[1]));
 	}
-        $response = "Result ".$result['response']['saveDepositUSSDResult']; 
+        $response = "END Result ".$result['response']['saveDepositUSSDResult']; 
 
     }
 
