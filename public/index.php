@@ -53,7 +53,7 @@ if($str_arr[0] == "1"){
 	{
 		$result['response'] = $client->call($action,array("saveaseID"=>$str2));
 	}
-        $response = "END ".$result['response']['getBalzResult'];  
+        $response = "END YOur Savease account is : N ".$result['response']['getBalzResult'];  
 }
 
 // Echo the response back to the API
