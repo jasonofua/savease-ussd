@@ -71,9 +71,9 @@ if($str_arr[0] == "1"){
         
 
     }else {
-
         $str_arrDeposit = explode (",", $str_arr[2]);
-        $response = "END Details ".$str_arrDeposit;
+
+        $response = "END Your details ".$str_arrDeposit; 
 
     //     require_once('../lib/nusoap.php');
     //     $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
@@ -95,8 +95,8 @@ if($str_arr[0] == "1"){
     // }else{
     //     $response = "END Your deposit was unsuccessful. "; 
     // }
-
-    // }
+        
+    }
 
     
 
