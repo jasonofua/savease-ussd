@@ -59,8 +59,14 @@ if($str_arr[0] == "1"){
 	if (isset($action))
 	{
 		$result['response'] = $client->call($action,array("in_acctNo"=>$str2,"in_cardpin"=>$str_arrDeposit[0],"in_naration"=>$str_arrDeposit[1]));
-	}
-        $response = "END Result ".$result['response']['saveDepositUSSDResult']; 
+    }
+    
+    if ($result == 1){
+        $response = "END Your deposit was successful. "; 
+    }else{
+        $response = "END Your deposit was unsuccessful. "; 
+    }
+        
 
     }
 
