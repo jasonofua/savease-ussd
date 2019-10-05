@@ -15,42 +15,28 @@ if ($text == ""){
     $response .= "1. Verify Voucher \n";
     $response .= "2. My phone number";
 }else if($text == "1"){
-    $response  = "CON Enter Voucher Pin".$userResponse;
-
-    
+    $response  = "CON Enter Voucher Pin".$userResponse;    
 }else if($num == 2){
 
 if($str_arr[0] == "1"){
     require_once('../lib/nusoap.php');
         $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
         $client = new nusoap_client($wsdl, 'wsdl');
-
         $error = $client->getError();
-
-       
-	
 	if ($error)
 	{
 		echo $error; die();
 	}
-	
     $action = "VerifyPin";
-    
     $result = array();
-
 	if (isset($action))
 	{
 		$result['response'] = $client->call($action,array("inputParame"=>$str_arr[1]));
 	}
-
-        $response = "END ".$result['response']['VerifyPinResult'];
-   
+        $response = "END ".$result['response']['VerifyPinResult'];  
 }
     
-    
 }
-
-
 
 // Echo the response back to the API
 header('Content-type: text/plain');
