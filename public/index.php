@@ -37,6 +37,13 @@ if($str_arr[0] == "1"){
 		$result['response'] = $client->call($action,array("inputParame"=>$str_arr[1]));
 	}
         $response = "END ".$result['response']['VerifyPinResult'];  
+}else if ($str_arr[0] == "3"){
+
+    if ($str_arr[1] == "1"){
+        $response = "END Self deposit ";
+
+    }
+
 }
     
 }else if ($text == "2"){
@@ -54,7 +61,7 @@ if($str_arr[0] == "1"){
 	{
 		$result['response'] = $client->call($action,array("saveaseID"=>$str2));
 	}
-        $response = "END YOur Savease account is : N ".$result['response']['getBalzResult'];  
+        $response = "END Your Savease account is : N ".$result['response']['getBalzResult'];  
 }else if ($text == "3") {
     $response  = "CON Select Account Type \n";
     $response .= "1. Self \n";
