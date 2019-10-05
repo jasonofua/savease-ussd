@@ -73,7 +73,7 @@ if($str_arr[0] == "1"){
     }else {
         $str_arrDeposit = explode (",", $str_arr[2]);
 
-        $response = "END Your details ".$str_arrDeposit; 
+        $response = "END Your details ".$str_arrDeposit[1]; 
 
     //     require_once('../lib/nusoap.php');
     //     $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
