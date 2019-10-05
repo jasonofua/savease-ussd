@@ -17,6 +17,7 @@ if ($text == ""){
     $response .= "1. Verify Voucher \n";
     $response .= "2. Get Balance \n";
     $response .= "3. Make Deposit \n";
+    $response .= "4. Transfer Funds \n";
 }else if($text == "1"){
     $response  = "CON Enter Voucher Pin";    
 }else if($num >= 2){
@@ -100,6 +101,13 @@ if($str_arr[0] == "1"){
 
     
 
+}else if ($str_arr[0] == "4"){
+    if ($num >= 2){
+        $str_arrTransfer = explode (",", $str_arr[1]);
+        $response = "END Your details ".$str_arrTransfer[1];
+
+    }
+
 }
     
 }else if ($text == "2"){
@@ -122,6 +130,10 @@ if($str_arr[0] == "1"){
     $response  = "CON Select Account Type \n";
     $response .= "1. Self \n";
     $response .= "2. Savease Account \n";
+}else if ($text == "4"){
+
+    $response = "CON Enter the amount, reciever account number,narration and your pin all seperated by a comma (,) ";
+
 }
 
 // Echo the response back to the API
