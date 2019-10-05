@@ -75,26 +75,26 @@ if($str_arr[0] == "1"){
 
         $response = "END Your details ".$str_arrDeposit[1]; 
 
-    //     require_once('../lib/nusoap.php');
-    //     $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
-    //     $client = new nusoap_client($wsdl, 'wsdl');
-    //     $error = $client->getError();
-	// if ($error)
-	// {
-	// 	echo $error; die();
-	// }
-    // $action = "saveDepositUSSD";
-    // $result = array();
-	// if (isset($action))
-	// {
-	// 	$result['response'] = $client->call($action,array("in_acctNo"=>$str_arrDeposit[0],"in_cardpin"=>$str_arrDeposit[1],"in_naration"=>$str_arrDeposit[2]));
-    // }
+        require_once('../lib/nusoap.php');
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
+        $error = $client->getError();
+	if ($error)
+	{
+		echo $error; die();
+	}
+    $action = "saveDepositUSSD";
+    $result = array();
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action,array("in_acctNo"=>$str_arrDeposit[0],"in_cardpin"=>$str_arrDeposit[1],"in_naration"=>$str_arrDeposit[2]));
+    }
     
-    // if ($result['response']['saveDepositUSSDResult'] == 1){
-    //     $response = "END Your deposit was successful. "; 
-    // }else{
-    //     $response = "END Your deposit was unsuccessful. "; 
-    // }
+    if ($result['response']['saveDepositUSSDResult'] == 1){
+        $response = "END Your deposit was successful. "; 
+    }else{
+        $response = "END Your deposit was unsuccessful. "; 
+    }
         
     }
 
