@@ -15,9 +15,9 @@ $str2 = substr($phoneNumber, 4);
 if ($text == ""){
     $response  = "CON What would you want to do \n";
     $response .= "1. Verify Voucher \n";
-    $response .= "2. My phone number".$str2;
+    $response .= "2. Get Balance";
 }else if($text == "1"){
-    $response  = "CON Enter Voucher Pin".$userResponse;    
+    $response  = "CON Enter Voucher Pin";    
 }else if($num == 2){
 
 if($str_arr[0] == "1"){
@@ -38,6 +38,22 @@ if($str_arr[0] == "1"){
         $response = "END ".$result['response']['VerifyPinResult'];  
 }
     
+}else if ($text == "2"){
+    require_once('../lib/nusoap.php');
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
+        $error = $client->getError();
+	if ($error)
+	{
+		echo $error; die();
+	}
+    $action = "getBalz";
+    $result = array();
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action,array("saveaseID"=>$str2));
+	}
+        $response = "END ".$result['response']['getBalzResult'];  
 }
 
 // Echo the response back to the API
