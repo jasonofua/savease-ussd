@@ -137,7 +137,7 @@ if($str_arr[0] == "1"){
     $result = array();
 	if (isset($action))
 	{
-		$result['response'] = $client->call($action,array("amountTransfered"=>$str_arrTransfer[0],"beneficiaryAccount"=>$str_arr[1],"saveaseid"=>$str2,"in_naration"=>$str_arrTransfer[2],"userpin"=>$str_arrTransfer[3]));
+		$result['response'] = $client->call($action,array("amountTransfered"=>$str_arrTransfer[0],"beneficiaryAccount"=>$str_arr[1],"saveaseid"=>$str2,"in_naration"=>$str_arrTransfer[1],"userpin"=>$str_arrTransfer[2]));
     }
     
     if ($result['response']['transferFundUSSDResult'] == 1){
