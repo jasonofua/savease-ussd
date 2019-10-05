@@ -39,10 +39,18 @@ if($str_arr[0] == "1"){
         $response = "END ".$result['response']['VerifyPinResult'];  
 }else if ($str_arr[0] == "3"){
 
-    if ($str_arr[1] == "1"){
-        $response = "CON Enter card pin and narration seperated by a comma (,) ";
+    if ($num == 2){
+        if ($str_arr[1] == "1"){
+            $response = "CON Enter card pin and narration seperated by a comma (,) ";
+    
+        }
+    }else if ($num >2){
+
+        $response = "END pin is ".$str_arr[2];
 
     }
+
+    
 
 }
     
