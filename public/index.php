@@ -45,8 +45,22 @@ if($str_arr[0] == "1"){
     
         }
     }else if ($num >2){
-
-        $response = "END pin is ".$str_arr[2];
+        $str_arrDeposit = explode (",", $str_arr[2]);
+        require_once('../lib/nusoap.php');
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
+        $error = $client->getError();
+	if ($error)
+	{
+		echo $error; die();
+	}
+    $action = "saveDepositUSSD";
+    $result = array();
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action,array("in_acctNo"=>$str2,"in_cardpin"=>$str_arrDeposit[0],"in_naration"=>$str_arrDeposit[1]));
+	}
+        $response = "Result ".$result['response']['saveDepositUSSDResult']; 
 
     }
 
