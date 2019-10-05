@@ -121,31 +121,34 @@ if($str_arr[0] == "1"){
         $response = "CON  You are about to transfer funds to ".$result['response']['getNameOnDepositResult']."  Enter the amount, narration and your pin all seperated by a comma (,)";  
 
 
-     //   $str_arrTransfer = explode (",", $str_arr[1]);
-
-    //     require_once('../lib/nusoap.php');
-    //     $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
-    //     $client = new nusoap_client($wsdl, 'wsdl');
-    //     $error = $client->getError();
-	// if ($error)
-	// {
-	// 	echo $error; die();
-	// }
-    // $action = "transferFundUSSD";
-    // $result = array();
-	// if (isset($action))
-	// {
-	// 	$result['response'] = $client->call($action,array("amountTransfered"=>$str_arrTransfer[0],"beneficiaryAccount"=>$str_arrTransfer[1],"saveaseid"=>$str2,"in_naration"=>$str_arrTransfer[2],"userpin"=>$str_arrTransfer[3]));
-    // }
-    
-    // if ($result['response']['transferFundUSSDResult'] == 1){
-    //     $response = "END Your transfer was successful. "; 
-    // }else {
-    //     $response = "END Your deposit was unsuccessful. "; 
-    // }
-       
 
     }else if ($num > 2){
+          $str_arrTransfer = explode (",", $str_arr[2]);
+
+        require_once('../lib/nusoap.php');
+        $wsdl   = "http://savease.ng/webservice1.asmx?wsdl";
+        $client = new nusoap_client($wsdl, 'wsdl');
+        $error = $client->getError();
+	if ($error)
+	{
+		echo $error; die();
+	}
+    $action = "transferFundUSSD";
+    $result = array();
+	if (isset($action))
+	{
+		$result['response'] = $client->call($action,array("amountTransfered"=>$str_arrTransfer[0],"beneficiaryAccount"=>$str_arrTransfer[1],"saveaseid"=>$str2,"in_naration"=>$str_arrTransfer[2],"userpin"=>$str_arrTransfer[3]));
+    }
+    
+    if ($result['response']['transferFundUSSDResult'] == 1){
+        $response = "END Your transfer was successful. "; 
+    }else if ($result['response']['transferFundUSSDResult'] == 0){
+        $response = "END Your transfer was unsuccessful. "; 
+    }else if ($result['response']['transferFundUSSDResult'] == 2){
+        $response = "END Invalid Pin ";
+    }else if ($result['response']['transferFundUSSDResult'] == 3){
+        $response = "END Insuffiecient balance ";
+    }
 
     }
 
@@ -173,8 +176,6 @@ if($str_arr[0] == "1"){
     $response .= "2. Savease Account \n";
 }else if ($text == "4"){
     $response = "CON Enter reciever account number ";
-
-   // $response = "CON Enter the amount, reciever account number,narration and your pin all seperated by a comma (,) ";
 
 }
 
