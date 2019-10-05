@@ -40,7 +40,7 @@ if($str_arr[0] == "1"){
 }else if ($str_arr[0] == "3"){
 
     if ($str_arr[1] == "1"){
-        $response = "END Self deposit ";
+        $response = "CON Enter card pin and narration seperated by a comma (,) ";
 
     }
 
