@@ -43,6 +43,8 @@ if($str_arr[0] == "1"){
         if ($str_arr[1] == "1"){
             $response = "CON Enter card pin and narration seperated by a comma (,) ";
     
+        }else{
+
         }
     }else if ($num >2){
         $str_arrDeposit = explode (",", $str_arr[2]);
@@ -61,7 +63,7 @@ if($str_arr[0] == "1"){
 		$result['response'] = $client->call($action,array("in_acctNo"=>$str2,"in_cardpin"=>$str_arrDeposit[0],"in_naration"=>$str_arrDeposit[1]));
     }
     
-    if ($result == 1){
+    if ($result['response']['saveDepositUSSDResult'] == 1){
         $response = "END Your deposit was successful. "; 
     }else{
         $response = "END Your deposit was unsuccessful. "; 
