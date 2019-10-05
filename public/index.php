@@ -10,10 +10,12 @@ $str_arr = explode ("*", $text);
 $num = count($str_arr);
 $userResponse=trim(end($str_arr));
 
+$str2 = substr($phoneNumber, 4);
+
 if ($text == ""){
     $response  = "CON What would you want to do \n";
     $response .= "1. Verify Voucher \n";
-    $response .= "2. My phone number".$phoneNumber;
+    $response .= "2. My phone number".$str2;
 }else if($text == "1"){
     $response  = "CON Enter Voucher Pin".$userResponse;    
 }else if($num == 2){
