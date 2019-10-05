@@ -13,7 +13,7 @@ $userResponse=trim(end($str_arr));
 if ($text == ""){
     $response  = "CON What would you want to do \n";
     $response .= "1. Verify Voucher \n";
-    $response .= "2. My phone number";
+    $response .= "2. My phone number".$phoneNumber;
 }else if($text == "1"){
     $response  = "CON Enter Voucher Pin".$userResponse;    
 }else if($num == 2){
