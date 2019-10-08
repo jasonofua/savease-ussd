@@ -1,7 +1,7 @@
 <?php
 
-use GuzzleHttp\Client;
-use GuzzleHttp\Psr7\Request;
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Psr7\Request;
 // Reads the variables sent via POST from our gateway
 $sessionId   = $_POST["sessionId"];
 $serviceCode = $_POST["serviceCode"];
@@ -12,7 +12,7 @@ $num = count($str_arr);
 $userResponse=trim(end($str_arr));
 
 $str2 = substr($phoneNumber, 4);
-$client = new GuzzleHttp\Client(['base_uri' => 'https://www.bulksmsnigeria.com/api/v1/sms/']);
+//$client = new GuzzleHttp\Client(['base_uri' => 'https://www.bulksmsnigeria.com/api/v1/sms/']);
 
 if ($text == ""){
     $response  = "CON What would you want to do \n";
@@ -67,14 +67,14 @@ if($str_arr[0] == "1"){
     }
     
     if ($result['response']['saveDepositUSSDResult'] == 1){
-        $time = date ('d/m/y h:i:s'); 
+    //    $time = date ('d/m/y h:i:s'); 
 
-        $smsResponse = $client->post('create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to='.$phoneNumber.'&body=Your Acct '.$str2.' Has Been Credited  On '.$time.' By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2');
-        $code = $smsResponse->getStatusCode();
+       // $smsResponse = $client->post('create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to='.$phoneNumber.'&body=Your Acct '.$str2.' Has Been Credited  On '.$time.' By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2');
+       // $code = $smsResponse->getStatusCode();
 
-        if ($code == 200){
+       // if ($code == 200){
             $response = "END Your deposit was successful. ";
-        }
+       // }
          
     }else{
         $response = "END Your deposit was unsuccessful. "; 
