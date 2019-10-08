@@ -65,17 +65,16 @@ if($str_arr[0] == "1"){
 	{
 		$result['response'] = $client->call($action,array("in_acctNo"=>$str2,"in_cardpin"=>$str_arrDeposit[0],"in_naration"=>$str_arrDeposit[1]));
     }
-    $time = date ('d/m/y h:i:s'); 
-
-    
+   
     if ($result['response']['saveDepositUSSDResult'] == 1){
-    $url = "https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to=".$phoneNumber."&body=Your Acct ".$str2." Has Been Credited  On ".$time." By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2";
+    $url = "https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to=".$phoneNumber."&body=Your Acct ".$str2." Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2";
     $ch = curl_init();
     curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
     curl_setopt($ch,CURLOPT_URL,$url);
     curl_setopt($ch, CURLOPT_POST, true);
 
     $result = curl_exec($ch);
+    $ri = json_decode($result);
    if(!$result){die("Connection Failure");}
    curl_close($ch);
 
