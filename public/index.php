@@ -95,7 +95,7 @@ if($str_arr[0] == "1"){
 // }
 
       
-        $response = "END Your deposit was successful. ".$curl_post_data;
+        $response = "END Your deposit was successful. ".$curl_post_data[3];
     
          
     }else{
