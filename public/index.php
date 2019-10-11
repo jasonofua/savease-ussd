@@ -12,6 +12,7 @@ $num = count($str_arr);
 $userResponse=trim(end($str_arr));
 
 $str2 = substr($phoneNumber, 4);
+$newString = $str2.substr(0, 3) + "XXXX" + $str2.substr(3+4);
 //$client = new GuzzleHttp\Client(['base_uri' => 'https://www.bulksmsnigeria.com/api/v1/sms/']);
 
 if ($text == ""){
@@ -67,24 +68,35 @@ if($str_arr[0] == "1"){
     }
    
     if ($result['response']['saveDepositUSSDResult'] == 1){
-    $url = "https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to=".$phoneNumber."&body=Your Acct Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2";
-    // $ch = curl_init();
-    // curl_setopt($ch,CURLOPT_RETURNTRANSFER,true);
-    // curl_setopt($ch,CURLOPT_URL,$url);
-    //curl_setopt($ch, CURLOPT_POST, true);
+   // $url = "https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to=".$phoneNumber."&body=Your Acct Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2";
 
-//     $result = curl_exec($ch);
-//     $ri = json_decode($result);
-//    if(!$result){die("Connection Failure");}
-//    curl_close($ch);
+   $service_url = 'https://www.bulksmsnigeria.com/api/v1/sms/create';
+   $curl = curl_init($service_url);
+   $curl_post_data = array(
+        'api_token' => '9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz',
+        'from' => 'SAVEASE',
+        'to' => $phoneNumber,
+        'body' => 'Your Acct '.$newString.' Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR',
+        'dnd'=> '2'
+);
+curl_setopt($curl, CURLOPT_RETURNTRANSFER, true);
+curl_setopt($curl, CURLOPT_POST, true);
+curl_setopt($curl, CURLOPT_POSTFIELDS, $curl_post_data);
+$curl_response = curl_exec($curl);
+if ($curl_response === false) {
+    $info = curl_getinfo($curl);
+    curl_close($curl);
+    die('error occured during curl exec. Additioanl info: ' . var_export($info));
+}
+curl_close($curl);
+$decoded = json_decode($curl_response);
+if (isset($decoded->response->status) && $decoded->response->status == 'ERROR') {
+    die('error occured: ' . $decoded->response->errormessage);
+}
 
-     
-       // $smsResponse = $client->post('create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to='.$phoneNumber.'&body=Your Acct '.$str2.' Has Been Credited  On '.$time.' By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2');
-       // $code = $smsResponse->getStatusCode();
-
-       // if ($code == 200){
-            $response = "END Your deposit was successful. ".$url;
-       // }
+      
+        $response = "END Your deposit was successful. ".$decoded;
+    
          
     }else{
         $response = "END Your deposit was unsuccessful. "; 
