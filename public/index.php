@@ -1,5 +1,5 @@
 <?php
-require 'vendor/autoload.php';
+
 use GuzzleHttp\Client;
 // use GuzzleHttp\Client;
 // use GuzzleHttp\Psr7\Request;
@@ -14,7 +14,7 @@ $userResponse=trim(end($str_arr));
 
 $str2 = substr($phoneNumber, 4);
 $newString = $str2.substr(0, 3) + "XXXX" + $str2.substr(3+4);
-$client = new \GuzzleHttp\Client();
+$client = new GuzzleHttp\Client();
 
 if ($text == ""){
     $response  = "CON What would you want to do \n";
