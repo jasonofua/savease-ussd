@@ -1,6 +1,5 @@
 <?php
 
-use GuzzleHttp\Client;
 // use GuzzleHttp\Client;
 // use GuzzleHttp\Psr7\Request;
 // Reads the variables sent via POST from our gateway
@@ -14,7 +13,7 @@ $userResponse=trim(end($str_arr));
 
 $str2 = substr($phoneNumber, 4);
 $newString = $str2.substr(0, 3) + "XXXX" + $str2.substr(3+4);
-$client = new GuzzleHttp\Client();
+
 
 if ($text == ""){
     $response  = "CON What would you want to do \n";
@@ -69,13 +68,11 @@ if($str_arr[0] == "1"){
     }
    
     if ($result['response']['saveDepositUSSDResult'] == 1){
-
-        $responses = $client->post('https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to='.$phoneNumber.'&body=Your Acct Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2');
    // $url = "https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to=".$phoneNumber."&body=Your Acct Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2";
 
-  
+    
 
-        $response = "END Your deposit was successful. ".$responses;
+        $response = "END Your deposit was successful. ".$decoded;
     
          
     }else{
