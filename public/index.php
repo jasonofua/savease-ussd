@@ -1,7 +1,8 @@
 <?php
 
-use yii\httpclient\Client;
-
+// use GuzzleHttp\Client;
+// use GuzzleHttp\Psr7\Request;
+// Reads the variables sent via POST from our gateway
 $sessionId   = $_POST["sessionId"];
 $serviceCode = $_POST["serviceCode"];
 $phoneNumber = $_POST["phoneNumber"];
@@ -9,8 +10,6 @@ $text        = $_POST["text"];
 $str_arr = explode ("*", $text);
 $num = count($str_arr);
 $userResponse=trim(end($str_arr));
-
-$client = new Client();
 
 $str2 = substr($phoneNumber, 4);
 $newString = $str2.substr(0, 3) + "XXXX" + $str2.substr(3+4);
@@ -71,15 +70,9 @@ if($str_arr[0] == "1"){
     if ($result['response']['saveDepositUSSDResult'] == 1){
    // $url = "https://www.bulksmsnigeria.com/api/v1/sms/create?api_token=9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz&from=SAVEASE&to=".$phoneNumber."&body=Your Acct Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR&dnd=2";
 
-        $responses = $client->createRequest()
-        ->setMethod('POST')
-        ->setUrl('https://www.bulksmsnigeria.com/api/v1/sms/create')
-        ->setData(['api_token' => '9Pc1XtdCYg43wdJ6AlbCSCyTlLqc2voEFpl9DvmUq0zcKJTDbdE4aOYOPtzz', 'from' => 'SAVEASE','to' => $phoneNumber,'body' => 'Your Acct Has Been Credited  By SAVEASE DEPOSIT - (Transaction Ref)CR','dnd' => '2'])
-        ->send();
-        if ($responses->isOk) {
-        
-        }
-        $response = "END Your deposit was successful. ".$responses;
+    
+
+        $response = "END Your deposit was successful. ".$decoded;
     
          
     }else{
